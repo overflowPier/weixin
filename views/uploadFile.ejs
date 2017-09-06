@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h3>上传文件</h3>
+    <form method="post" action="/upload" enctype="multipart/form-data" >
+ 	 	<input type="text" name="username">
+  		<input type="password" name="password">
+ 	  <label for="upFile">上传文件：</label>
+ 	  <input type="file" name="thumbnail" id="upFile">
+ 	  <input type='submit' value='提交'>
+ 	  <input type='reset' value='重置'>
+    </form>
+  </body>
+</html>
