@@ -50,14 +50,15 @@ function getCode (res, appid, rUri, scopeType, state) {
         })
 }
 
+
 // 请求基本的code， snsapi_base 不弹出授权页面，直接跳转，只能获取用户openid
 router.get('/getBaseCode', function (req, res) {
-    getCode(res, wx.appid, 'https://www.baidu.com', 'snsapi_base');
+    getCode(res, wx.appid, 'http://h5.cloudm.com/index.html', 'snsapi_base', 'cloudm');
 })
 
 // 在授权后获取该用户的基本信息。  可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息
 router.get('/getUserinfoCode', function(req, res) {
-	getCode(res, wx.appid, 'https://www.baidu.com', 'snsapi_userinfo');
+	getCode(res, wx.appid, 'http://h5.cloudm.com/index.html', 'snsapi_userinfo', 'cloudm');
 })
 
 module.exports = router;
