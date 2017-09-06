@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 // var weixin = require('./routes/weixin');
 var uploadFile = require('./routes/uploadFile');
 
@@ -25,7 +24,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 // app.use('/weixin', weixin);
 app.use('/', uploadFile);
 
