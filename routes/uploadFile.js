@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
 var path= require("path");
 var fs = require('fs');
 var formidable = require('formidable');
@@ -105,7 +104,7 @@ router.post('/m_single', upload.single('avatar'), function (req, res, next) {
   console.log('------------png', req.file.mimetype == 'image/png', ext == "png")
 
 
-  if (ext != "jpeg" && ext != "jpg" && ext != "gif" && ext != "png") {
+  if (ext != "jpeg" || ext != "jpg" || ext != "gif" || ext != "png") {
     res.status(400).send({
       message: '图片只能jpg/jpeg/png/gif',
       result: null,

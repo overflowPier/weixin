@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.bootcss.com/vue/2.5.3/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/iview/2.7.2/iview.min.js"></script>
+    <link rel="preload" href="https://cdn.bootcss.com/iview/2.7.2/styles/fonts/ionicons.svg">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/iview/2.7.2/styles/iview.css">
+    <script>
+  		//AK: OS6H9uFgrr1gTkIRgcVqBpBOFaG4F4s1C3srj7zU
+		// SK: LS-t4PEj3u5dQ_lJxA3WwjUfrspcKHZKUzVHMpsx
+    </script>
+  </head>
+  <body>
+	<div id="app" class="content">		
+	    <h3>上传文件</h3>
+	    <form method="post" action="" enctype="multipart/form-data">
+	    	<label class="btn btn-danger up_file">
+	    		文件上传
+	    		<input type="file" name="upFile" 
+	    			   @change="hanldeUpload"	
+	    			   accept="image/jpg,image/jpeg,image/png,image/gif" 
+	    			   ref="upFile" />
+	    	</label>
+	    </form>
+
+	    <ul class="files">
+	    	<li class="item_file" v-for="imgFile in fileList">
+	    		<img :src="imgFile.show_path" alt="">
+	    	</li>
+	    </ul>
+	</div>
+    
+    <script>
+    	var app = new Vue({
+    		el: '#app',
+    		data: function () {
+    			return {
+    				file: '',
+    				publicPath: '',
+    				fileList: []
+    			}
+    		},
+    		methods: {
+    			hanldeUpload: function (event) {
+    				const file = event.target.files[0];
+    				this.file = this.$refs.upFile.value;
+
+    				// 文件对象
+    				let formData = new FormData();
+    				formData.append('upFile', file);
+
+    				axios.post('/qn_file', formData, {
+    					 	timeout: 3000,
+    						responseType: 'json'
+    					})
+    					.then(res => res.data)
+    					.then(res => {
+    						console.log('------------res', res);
+    						res.result.show_path = this.file.path;
+    						if (res.success) {
+    							this.fileList.push(res.result);
+    							this.$Message.success(res.message);
+    						} 
+    						else {
+    							this.$Message.error(res.message);
+    						}				
+    					})
+    					.catch(err => {
+    						console.log('------------err', err);		
+    					})
+    			}
+    		},
+    		created: function () {
+    			this.publicPath = location.href + '/';
+    			axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+    		}
+    	})
+    </script>
+  </body>
+</html>
