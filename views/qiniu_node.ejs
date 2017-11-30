@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h3><%= title %></h3>
+
+    <form method="post" action="/qn_node_api" enctype="multipart/form-data" >
+   	 	<!-- <input type="text" name="username">
+    		<input type="password" name="password"> -->
+   	  <label for="upFile">上传文件：</label>
+   	  <input type="file" name="upFile" id="upFile">
+   	  <input type='submit' value='提交'>
+   	  <!-- <input type='reset' value='重置'> -->
+    </form>
+    
+    <!-- <h3>multer单个上传文件</h3>
+    <form method="post" action="/m_single" enctype="multipart/form-data" >
+      <input type="text" name="username">
+        <input type="password" name="password">
+      <label for="avatars">上传文件：</label>
+      <% if(typeof avatar !== 'undefined') { %>
+        <img src=<%= avatar%> />
+      <%}%>
+      <input type="file" name="avatar" id="theFile">
+      <input type='submit' value='提交'> <input type='reset' value='重置'>
+    </form> -->
+
+
+    <!-- <h3>multer多个上传文件</h3>
+    <form method="post" action="/m_multipart" enctype="multipart/form-data" >
+      <input type="text" name="usernames">
+        <input type="password" name="passwords">
+      <label for="photos">上传文件：</label>
+      <input type="file" name="avatars" id="theFiles" multiple="multiple">
+      <input type='submit' value='提交'> <input type='reset' value='重置'>
+    </form> -->
+  </body>
+</html>

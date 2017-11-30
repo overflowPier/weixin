@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%-title %></title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="stylesheets/weui.css">
+    <style>
+    	body {
+    		background: #f8f8f8;
+    	}
+    	.weui-btn-area {
+    		padding-top: 30px;
+    	}
+    	.weui-cells__title {
+    		text-align: center;
+    		font-size: 18px;
+    	} 
+    </style>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+    <script src="//cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+    <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+</head>
+<body>
+<div id="app">
+  <div class="weui-cells weui-cells_form">
+  	<h3 class="weui-cells__title">登录</h3>
+  	<div class="weui-cell">
+  		<div class="weui-cell__hd">
+  			<label class="weui-label">用户名：</label>
+  		</div>
+  		<div class="weui-cell__bd">
+  			<input type="text" id="userName" v-model="userName" class="weui-input" />
+  		</div>
+  	</div> 
+  	<div class="weui-cell">
+  		<div class="weui-cell__hd">
+  			<label class="weui-label">密码：</label>
+  		</div>
+		<div class="weui-cell__bd">  		  		
+	  		<input type="text" id="userPwd" v-model="userPwd" class="weui-input" />
+	  	</div>
+  	</div>
+  </div>
+
+  <div class="weui-btn-area">
+  		<a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">确定</a>
+  </div>
+</div>
+<script src="js/login.js"></script>
+</body>
+</html>
