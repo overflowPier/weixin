@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%-title %></title>
+  <script src="../socket.io/socket.io.js"></script>
+  <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  <style>
+  	label, input, textarea
+  	{
+  		display: block; vertical-align: top;
+  	}
+  </style>
+</head>
+<body>
+	<ul id="messages"></ul>
+
+	<form action="">
+		<label for="userName">
+			<span>用户名：</span>
+			<input type="text" id="userName" />
+		</label>
+		
+		<label for="userName">
+			<span>留言：</span>
+			<textarea name="" id="userMess" cols="30" rows="10"></textarea>
+		</label>
+
+		<div>
+			<button id="subBtn">提交</button>
+		</div>
+	</form>
+
+	<script>
+		var socket = io.connect('ws://127.0.0.1:5000'), messages = $('#messages');
+
+		$('#subBtn').on('click', function () {
+			var userNameEle = $('#userName'), userMessEle = $('#userMess'),
+				userName = userNameEle.val().trim(),
+				userMess = userMessEle.val().trim();
+
+			socket.emit('message', userName + '------->' + userMess);
+
+			userNameEle.val('');
+			userMessEle.val('');
+			return false;
+		});
+
+		socket.on('message', function(msg){
+			messages.append('<li>msg: '+ msg +'</li>');
+		})
+	</script>
+</body>
+</html>

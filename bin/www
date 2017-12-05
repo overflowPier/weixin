@@ -88,3 +88,15 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+var socket = global.io.listen(server);
+
+// socket 连接
+socket.on('connection', function (socket) {
+
+  socket.on('message', function (msg) {
+    console.log('---------msg', msg);
+    io.emit('message', msg);
+  });
+});
