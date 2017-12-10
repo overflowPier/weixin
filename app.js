@@ -29,6 +29,7 @@ app.use('/', require('./routes/qiniu_file'));
 app.use('/', require('./routes/qiniu_node'));
 app.use('/', require('./routes/login'));
 app.use('/', require('./routes/socket'));
+app.use('/', require('./routes/chuiziShare'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
